@@ -1,0 +1,14 @@
+{
+  "name": "gooutogether-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "nodemon": "^2.0.12",
+    "pg": "^8.7.1",
+    "socket.io": "^4.1.3"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  }
+}
