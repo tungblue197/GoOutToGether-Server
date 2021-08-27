@@ -1,11 +1,19 @@
-const server = require('http').createServer();
+const http = require('http');
 const { pool } = require('./db');
 const { findWinner } = require('./helper');
+const app = require('express')();
+
+
+const server = http.createServer(app);
+
 const io = require('socket.io')(server, {
     cors: {
         origin: ['http://localhost:3000']
     }
 });
+app.get('/',(req, res) => {
+    res.send('<h1>App started!</h1>')
+})
 const rooms = [];
 io.on('connection', socket => {
     socket.on('join-group', async ({ uId, gId }, cb) => {
@@ -79,5 +87,7 @@ io.on('connection', socket => {
         }
     })
 });
+const port = process.env.PORT || 8000;
 
-server.listen(8000);
+
+server.listen(port);
